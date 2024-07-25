@@ -6,6 +6,11 @@
     width: 200px;
     margin: 0 auto;
     border: #000;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #a5979780;
+    box-shadow: 0px 0px 10px rgba(199, 0, 0, 0.1);;
+    
 }
 
 .display,
@@ -35,5 +40,14 @@
 button {
     padding: 10px;
     font-size: 16px;
+
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #ee0000;
 
 }

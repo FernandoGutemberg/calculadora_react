@@ -8,12 +8,12 @@ const Calculator = () => {
     const [pendingValue, setPendingValue] = useState(null);
     const [completeOperation, setCompleteOperation] = useState("");
 
-    const keypadNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    const keypadNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     const operations = ["+", "-", "*", "/"];
 
     const handleClick = (val) => {
         setCurrentValue((prevValue) => {
-            if (prevValue === "0") {
+            if (prevValue === '0') {
                 return val;
             } else {
                 return prevValue + val;
@@ -29,12 +29,7 @@ const Calculator = () => {
         setCurrentValue("0");
     };
 
-    const handleClear = () => {
-        setCurrentValue("0");
-        setPendingOperation(null);
-        setCurrentValue(null);
-        setCompleteOperation("");
-    };
+
 
     const handleCalculate = () => {
         if (!pendingOperation || !pendingValue) {
@@ -51,12 +46,12 @@ const Calculator = () => {
                 result = num1 + num2
 
                 break;
-            case '*':
-                result = num1 * num2
-
-                break;
             case '-':
                 result = num1 - num2
+
+                break;
+            case '*':
+                result = num1 * num2
 
                 break;
             case '/':
@@ -70,9 +65,8 @@ const Calculator = () => {
                     return;
                 }
                 break;
-
             default:
-                break;
+                return;
         }
 
         setCompleteOperation(
@@ -90,24 +84,32 @@ const Calculator = () => {
 
     };
 
+    const handleClear = () => {
+        setCurrentValue('0');
+        setPendingOperation(null);
+        setPendingValue(null);
+        setCompleteOperation('');
+    };
 
     return (
+        
 
         <div className="calculator">
+            <div className="title">CALCULADORA</div>
             <div className="complete-operation">{completeOperation}</div>
             <div className="display">{currentValue}</div>
             <div className="buttons">
                 <button onClick={handleClear}>AC</button>
-                {keypadNumbers.map((num) => (
+                {keypadNumbers.map((num) => 
                     <button key={num} onClick={() => handleClick(num)}>
                         {num}
                     </button>
-                ))}
-                {operations.map((operation) => (
+                )}
+                {operations.map((operation) => 
                     <button key={operation} onClick={() => handleOperation(operation)}>
                         {operation}
                     </button>
-                ))}
+                )}
                 <button onClick={handleCalculate}>=</button>
             </div>
         </div>
